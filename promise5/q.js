@@ -7,8 +7,10 @@ var Deferred = function () {
             }
             _result = result;
 
-            processQueue(_pending, _this.promise.status = 'resolved', _result);
-            _pending = null;
+            setTimeout(function () {
+                processQueue(_pending, _this.promise.status = 'resolved', _result);
+                _pending = null;
+            }, 0);
         },
         reject: function (reason) {
             if (_this.promise.status !== 'pending') {
@@ -16,8 +18,10 @@ var Deferred = function () {
             }
             _reason = reason;
 
-            processQueue(_pending, _this.promise.status = 'rejected', null, _reason);
-            _pending = null;
+            setTimeout(function () {
+                processQueue(_pending, _this.promise.status = 'rejected', null, _reason);
+                _pending = null;
+            }, 0);
         },
         promise: {
             then: function (onResolved, onRejected) {
