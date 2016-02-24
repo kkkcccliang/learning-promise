@@ -17,3 +17,9 @@ job1.then(function (result) {
 job1.then(function (result) {
     console.log('we are done2:', result);
 });
+
+setTimeout(function () {
+    job1.then(function (result) {
+        console.log('we are done3:', result);
+    });
+}, 1000);

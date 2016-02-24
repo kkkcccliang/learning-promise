@@ -1,4 +1,4 @@
-var Promise = function () {
+var Deferred = function () {
     var _pending = [], _result;
 
     return {
@@ -11,14 +11,16 @@ var Promise = function () {
             }
             _pending = null;
         },
-        then: function (callback) {
-            if (_pending) {
-                _pending.push(callback);
-            } else {
-                callback(_result);
+        promise: {
+            then: function (callback) {
+                if (_pending) {
+                    _pending.push(callback);
+                } else {
+                    callback(_result);
+                }
             }
         }
     }
 };
 
-module.exports = Promise;
+module.exports = Deferred;
